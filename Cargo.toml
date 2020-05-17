@@ -9,23 +9,14 @@ readme = "README.md"
 edition = "2018"
 
 [features]
-default = ["amethyst/vulkan"]
+default = ["amethyst/metal"]
 shader-compiler = ["amethyst/shader-compiler"]
 docking = []
 
 [dependencies]
-imgui = { version = "0.2" }
-imgui-winit-support = { version = "0.2" }
-amethyst = { version = "0.14" }
-
-# Development dependencies
-#amethyst = { path = "../amethyst", features = ["saveload", "vulkan", "gltf", "experimental-spirv-reflection", "shader-compiler", "tiles"] }
-#imgui = { path = "../imgui-rs" }
-#imgui-winit-support = { path = "../imgui-rs/imgui-winit-support" }
-
-# Docking dependencies
-#imgui = { git = "https://github.com/jaynus/imgui-rs.git" }
-#imgui-winit-support = { git = "https://github.com/jaynus/imgui-rs.git" }
+amethyst = { version = "0.15" }
+imgui = { path = "./imgui-rs" }
+imgui-winit-support = { path = "./imgui-rs/imgui-winit-support", features = ["winit-19"], default-features = false }
 
 lazy_static = "1.4"
 derivative = "1.0"

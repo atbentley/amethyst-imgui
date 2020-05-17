@@ -1,3 +1,4 @@
+#![allow(unused_must_use)]
 #![allow(clippy::type_complexity, dead_code)]
 
 mod pass;
@@ -108,7 +109,7 @@ impl<'a, 'b, T: BindingTypes> SystemDesc<'a, 'b, ImguiInputSystem<T>> for ImguiI
 		context.io_mut().config_flags |= self.config_flags;
 
 		let mut platform = WinitPlatform::init(&mut context);
-		platform.attach_window(context.io_mut(), &world.fetch::<Window>(), HiDpiMode::Default);
+		platform.attach_window(context.io_mut(), &*world.fetch::<Window>(), HiDpiMode::Default);
 
 		world.insert(Arc::new(Mutex::new(ImguiState {
 			context,
@@ -149,7 +150,7 @@ impl<T: BindingTypes> Default for RenderImgui<T> {
 		Self {
 			target: Default::default(),
 			_marker: Default::default(),
-			config_flags: imgui::ConfigFlags::ENABLE_DOCKING,
+			config_flags: imgui::ConfigFlags::DOCKING_ENABLE,
 		}
 	}
 
